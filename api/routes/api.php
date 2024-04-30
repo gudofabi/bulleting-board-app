@@ -4,8 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\TaskController;
-use App\Http\Controllers\CompleteTaskController;
+use App\Http\Controllers\ArticleController;
 
 Route::prefix('v1')->group(function() {
 
@@ -16,4 +15,7 @@ Route::prefix('v1')->group(function() {
         return $request->user();
     })->middleware('auth:sanctum');
     
+    Route::middleware(['auth:sanctum'])->group(function () {
+        Route::apiResource('/articles', ArticleController::class);
+    });
 });
