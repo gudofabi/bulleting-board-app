@@ -10,10 +10,12 @@
             :key="article?.id"
             class="border-b border-gray-200 flex justify-between items-center py-3"
           >
-            <div>
-              <span class="text-xl font-semibold">{{ article?.title }} </span>
-              <p class="text-gray-700">{{ article.content }}</p>
-            </div>
+            <NuxtLink :href="`/articles/${article.id}`">
+              <div>
+                <span class="text-xl font-semibold">{{ article?.title }} </span>
+                <p class="text-gray-700">{{ article.content }}</p>
+              </div>
+            </NuxtLink>
             <div>
               <button
                 @click="func_handleDelete(article?.id)"

@@ -13,11 +13,6 @@
             <div class="flex space-x-4">
               <!-- Primary navigation items -->
               <NuxtLink
-                to="/"
-                class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700"
-                >Home</NuxtLink
-              >
-              <NuxtLink
                 v-if="isAuthenticated"
                 to="/articles"
                 class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700"

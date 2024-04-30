@@ -1,8 +1,12 @@
 import type { AxiosInstance } from "axios";
 
 export const articles = (axios: AxiosInstance) => ({
-    async getArticle(): Promise<any> {
+    async getArticles(): Promise<any> {
         return axios.get("/articles");
+    },
+
+    async getArticle(id: number): Promise<any> {
+        return axios.get(`/articles/${id}`)
     },
 
     async createArticle(params: any): Promise<any> {

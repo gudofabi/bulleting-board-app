@@ -3,8 +3,8 @@ import { defineStore } from "pinia";
 import { auth } from "~/utils/repository/auth";
 
 export const useAuthStore = defineStore("authStore", () => {
-    const { $axios, $auth } = useNuxtApp();
-    const regularRepo = auth($axios as AxiosInstance);
+    const { $regular, $auth } = useNuxtApp();
+    const regularRepo = auth($regular as AxiosInstance);
     const authRepo = auth($auth as AxiosInstance);
 
     /*** STATE */
@@ -31,7 +31,7 @@ export const useAuthStore = defineStore("authStore", () => {
             user.value = data.user;
             authenticated.value = "true";
             token.value = data.access_token;
-            window.location.href = "/";
+            window.location.href = "/articles";
           })
           .catch((err: any) => {
            console.log(err.response.data.message);

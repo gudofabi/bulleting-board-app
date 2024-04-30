@@ -15,14 +15,27 @@ export const useArticleStore = defineStore("articleStore", () => {
         return articleList.value ?? []
     })
 
+    const getArticle = computed(() => {
+        return articleData.value ?? {}
+    })
+
     /*** FUNCTIONS */
     const fetchList = () => {
-        articleRepo.getArticle().then((res: any)=> {
+        articleRepo.getArticles().then((res: any)=> {
            articleList.value = res.data.data
         })
         .catch((err: any) => {
             console.log(err)
         })
+    }
+
+    const fetchArticle = (id: number) => {
+        articleRepo.getArticle(id).then((res: any)=> {
+            articleData.value = res.data.data
+         })
+         .catch((err: any) => {
+             console.log(err)
+         })
     }
 
     const create = async (params: any) => {
@@ -36,8 +49,10 @@ export const useArticleStore = defineStore("articleStore", () => {
 
     return {
         fetchList,
+        fetchArticle,
         create,
         destroy,
-        getArticles
+        getArticles,
+        getArticle
     }
 });

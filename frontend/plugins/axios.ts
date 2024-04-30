@@ -17,5 +17,5 @@ export default defineNuxtPlugin((nuxtApp) => {
   );
 
   // You can set the instance on the Nuxt app so it can be accessed globally via useNuxtApp
-  nuxtApp.provide("axios", instance);
+  nuxtApp.provide("regular", instance);
 });
