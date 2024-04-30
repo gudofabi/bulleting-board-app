@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model
+class Comment extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'title',
         'content',
+        'article_id',
         'user_id'
     ];
 
@@ -19,16 +19,9 @@ class Article extends Model
         'created_at' => 'datetime:Y-m-d', // Cast to date with format Y-m-d
         'updated_at' => 'datetime:Y-m-d H:i:s', // Include time
     ];
-    
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
-    public function comments()
+    public function article()
     {
-        return $this->hasMany(Comment::class)->orderBy('created_at', 'desc');
+        return $this->belongsTo(Article::class);
     }
-
-    
 }

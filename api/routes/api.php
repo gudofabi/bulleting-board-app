@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CommentController;
 
 Route::prefix('v1')->group(function() {
 
@@ -17,5 +18,6 @@ Route::prefix('v1')->group(function() {
     
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::apiResource('/articles', ArticleController::class);
+        Route::apiResource('/articles/{id}/comments', CommentController::class);
     });
 });
